@@ -38,14 +38,14 @@
 
                 <!--img-->
                 <div class="blog-img">
-                    <img src="../static/images/pexels-jenny-mavimiro-15777495.jpg" data-th-src="@{/images/pexels-jenny-mavimiro-15777495.jpg}" alt="Blog">
+                    <img src="../static/images/pexels-jenny-mavimiro-15777495.jpg" th:src="'data:image/png;base64,' + ${post.getImageDataAsBase64()}">
                 </div>
 
                 <!--text--->
                 <div class="blog-text">
-                    <span th:text="${post.showPublicationDate()} + ' \\ ' + ${post.getCategory()}">18 July 2021 / Web Design</span>
+                    <span id="info" th:text="${post.showPublicationDate()} + ' \\ ' + ${post.getCategory()}">18 July 2021 / Web Design</span>
                     <a href="#" class="blog-title" th:href="'/blog/post/' + ${post.getId()}" th:text="${post.getTitle()}">Lorem ipsum dolor sit amet consectetur adipisicing elit.</a>
-                    <p th:text="${post.getContent()}">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab modi odit doloremque cum veniam aspernatur ipsam voluptatibus dolorum laboriosam minima.</p>
+                    <span id="shortcut" th:utext="${post.getContent()}"></span>
                     <a href="#" th:href="'blog/post/' + ${post.getId()}">Read More</a>
                 </div>
             </div>

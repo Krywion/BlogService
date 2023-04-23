@@ -1,4 +1,4 @@
-package pl.krywion.blogservice.Controller;
+package pl.krywion.blogservice.Controller.api;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

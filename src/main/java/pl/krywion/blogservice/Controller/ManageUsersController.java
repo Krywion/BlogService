@@ -1,5 +1,6 @@
 package pl.krywion.blogservice.Controller;
 
+import org.springframework.boot.Banner;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -14,13 +15,14 @@ import pl.krywion.blogservice.service.UserInfoService;
 @Controller
 @PreAuthorize("hasAuthority('ROLE_ADMIN')")
 @RequestMapping("/blog/panel/manageUsers")
-public class ManageUserController {
+public class ManageUsersController {
     private final UserInfoService userInfoService;
 
-    public ManageUserController(UserInfoService userInfoService) {
+    public ManageUsersController(UserInfoService userInfoService) {
         this.userInfoService = userInfoService;
     }
-    @GetMapping("/")
+
+    @GetMapping
     public String manageUserPanel(Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String username = auth.getName();
@@ -42,12 +44,19 @@ public class ManageUserController {
         String username = auth.getName();
 
         model.addAttribute("username", username);
+        model.addAttribute("name", "");
         return "addEditorForm";
     }
 
     @PostMapping("/addEditor")
-    public String addEditor(String name, String password) {
-        userInfoService.addEditor(name, password);
-        return "redirect:/blog/panel/manageUsers";
+    public String addEditor(String name, String password, String repeatPassword, Model model) {
+        if (password.equals(repeatPassword)) {
+            userInfoService.addEditor(name, password);
+            return "redirect:/blog/panel/manageUsers";
+        } else {
+            model.addAttribute("name", name);
+            return "addEditorForm";
+        }
+
     }
 }

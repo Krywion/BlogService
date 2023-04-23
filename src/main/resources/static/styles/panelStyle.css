@@ -62,6 +62,53 @@ body{
     padding: 40px;
     border-bottom: 1px solid rgba(0,0,0, 0.05);
 }
+.panel-options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 70%;
+    padding-bottom: 5px;
+}
+.adding-buttons {
+    display: flex;
+    align-items: center;
+}
+.panel-options .plus-anchor{
+    width: 32px;
+    margin-right: 5px;
+    
+}
+.panel-options .plus-anchor .plus-img img {
+    border-radius: 2px;
+}
+.panel-options .plus-anchor .plus-img {
+    height: 32px;
+}
+
+.panel-options .added-by {
+    position: absolute;
+    right: 47.9%;
+    font-size: 1.1rem;
+    color: #2b2b2b;
+    font-weight: 600;
+}
+#added-by {
+    color: #2b2b2b;
+    position: absolute;
+    right: 49%;
+}
+
+
+#add-post-button {
+    background-color:#04AA6D;
+    font-size: 1.1rem;
+    cursor: pointer;
+    height: 32px;
+    width: 100px;
+    border: none;
+    color: white;
+    border-radius: 2px;
+}
 .blog-heading{
     display: flex;
     justify-content: center;
@@ -76,30 +123,90 @@ body{
     color: #2b2b2b;
     font-weight: 600;
 }
-.blog-container{
+.panel-box{
     display: flex;
     justify-content: center;
+    border: 1px solid #ececec;
+    flex-direction: column;
+    width: 70%;
+}
+.panel-post{
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    margin:20px 0px;
-    flex-wrap: wrap;
+    padding: 20px;
+    border-bottom: 1px solid #ececec;
+}
+.panel-post:last-of-type{
+    border-bottom: none;
 }
 
-@media(max-width:1250px){
-    .blog-box{
-        width: 300px;
-    }
+.panel-post-item {
+    display: inline-block;
 }
-@media(max-width:1100px){
-    .blog-box{
-        width: 70%;
-    }
+.buttons {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 }
-@media(max-width:550px){
-    .blog-box{
-        margin: 20px 10px;
-        width: 100%;
-    }
-    #blog{
-        padding: 20px;
-    }
+#delete-button {
+    background-color: #d75252;
+    font-size: 1.1rem;
+    cursor: pointer;
+    height: 32px;
+    width: 80px;
+    border: none;
+    color: white;
+    border-radius: 2px;
+    margin-right: 10px;
 }
+
+#edit-button {
+    background-color: #797272;
+    font-size: 1.1rem;
+    cursor: pointer;
+    height: 32px;
+    width: 80px;
+    border: none;
+    color: white;
+    border-radius: 2px;
+    margin-right: 10px;
+}
+
+#hide-button {
+    background-color: #084cdf;
+    font-size: 1.1rem;
+    cursor: pointer;
+    height: 32px;
+    width: 80px;
+    border: none;
+    color: white;
+    border-radius: 2px;
+    margin-right: 10px;
+}
+
+#publish-button {
+    background-color: #084cdf;
+    font-size: 1.1rem;
+    cursor: pointer;
+    height: 32px;
+    width: 80px;
+    border: none;
+    color: white;
+    border-radius: 2px;
+    margin-right: 10px;
+}
+
+#manage-users-button {
+    background-color: #084cdf;
+    font-size: 1.1rem;
+    cursor: pointer;
+    height: 32px;
+    width: 160px;
+    border: none;
+    color: white;
+    border-radius: 2px;
+}
+
+
+

@@ -1,0 +1,80 @@
+<!DOCTYPE html >
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/styles/postStyle.css" data-th-href="@{/styles/postStyle.css}">
+    <title th:text="'My blog ' + ${post.getTitle()}">Document</title>
+    <link rel="shortcut icon" href="../static/images/reading-student-svgrepo-com.svg" data-th-href="@{/images/reading-student-svgrepo-com.svg}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"
+    data-th-href="@{https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap}">
+</head>
+</head>
+<body>
+
+    <!--post-->
+<section id="#post">
+
+    <!--nav-bar-->
+    <div class="top-nav">
+        <a class="active" href="/">Home</a>
+        <a href="#news">News</a>
+        <a href="#contact">Contact</a>
+        <a href="#about">About</a>
+        <a id="log-in" href="/blog/panel">
+            <img id="sign" src="../static/images/sign-in-white.svg" data-th-src="@{/images/sign-in-white.svg}">
+        </a>
+      </div>
+
+    <!--header-->
+        <div class="post-heading">
+            <span th:text="${post.getCategory()}">Category</span>
+            <h3 th:text="${post.getTitle()}">Tytuł</h3>
+        </div>  
+    
+    <!--post-container-->
+    <div class="post-container">
+
+        <!--post-box-->
+        <div class="post-box">
+            <div class="post-text">
+                <span th:utext="${post.getContent()}">Content</span>
+            </div>
+            <div class="post-credits">
+                <span th:text="${post.showPublicationDate()} + ' ' + ${post.getAuthor()}">Author</span>
+            </div>
+        </div>
+
+        <!--comment-form-->
+        <div class="comment-form">
+            <form th:action="'/blog/post/' + ${post.getId()} + '/addComment'" method="post">
+                <label for="comment-content">Treść komentarza</label>            
+                <textarea id="comment-content" type="text" name="content" required> </textarea>
+                <label for="comment-nickname">Imię, nick</label>
+                <input id="comment-nickname" name="author" type="text">
+                <button type="submit">
+                    <img src="../static/images/sent-svgrepo-com.svg" data-th-src="@{/images/sent-svgrepo-com.svg}">
+                </button>
+                
+            </form>
+        </div>
+
+        <!--comment-box-->
+        <div th:each="comment : ${comments}"  class="comment-box">
+            <div class="comment-text">
+                <span th:text="${comment.getContent()}">Comment</span>
+            </div>
+            <div class="comment-credits">
+                <span th:text="${comment.getAuthor()}">Anonymous</span>
+            </div>
+        </div>
+    </div>
+</section>
+        
+
+</body>
+</html>
+

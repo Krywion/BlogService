@@ -1,5 +1,6 @@
-package pl.krywion.blogservice.entity;
+package pl.krywion.blogservice.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,4 +19,5 @@ public class UserInfo {
     private long id;
     private String name;
     private String password;
+    private String roles;
 }

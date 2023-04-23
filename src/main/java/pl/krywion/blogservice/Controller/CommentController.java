@@ -1,2 +1,7 @@
-package pl.krywion.blogservice.Controller;public class CommentController {
+package pl.krywion.blogservice.Controller;
+
+import org.springframework.stereotype.Controller;
+
+@Controller
+public class CommentController {
 }

@@ -1,10 +1,75 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>My Blog</title>
+    <link rel="stylesheet" href="../static/styles/panelStyle.css" data-th-href="@{/styles/panelStyle.css}">
+    <link rel="shortcut icon" href="../static/images/reading-student-svgrepo-com.svg" data-th-href="@{/images/reading-student-svgrepo-com.svg}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"
+          data-th-href="@{https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap}">
 </head>
 <body>
-$END$
+<!--nav-bar-->
+<div class="top-nav">
+    <a class="active" href="/">Home</a>
+    <a href="#news">News</a>
+    <a href="#contact">Contact</a>
+    <a href="#about">About</a>
+    <a id="log-in" href="/blog/panel">
+        <img id="sign" src="../static/images/sign-in-white.svg" data-th-src="@{/images/sign-in-white.svg}">
+    </a>
+</div>
+<!--blog-->
+<section id="blog">
+    <div class="blog-heading">
+        <span th:text="'Signed in as ' + ${username}">username</span>
+        <h3>Panel</h3>
+    </div>
+
+    <div class="panel-options">
+        <div class="adding-buttons">
+            <div class="plus-anchor">
+                <a href="/blog/panel/manageUsers/addEditorForm">
+                    <div class="plus-img">
+                        <img src="../static/images/plus.svg" data-th-src="@{/images/plus.svg}">
+                    </div>
+                </a>
+            </div>
+            <div class="button-anchor">
+                <a href="/blog/panel/manageUsers/addEditorForm">
+                    <button id="add-post-button" name="addEditor" type="submit" >Add editor</button>
+                </a>
+            </div>
+        </div>
+        <div class="panel-option">
+            <a href="/blog/panel">
+                <button id="manage-users-button" name="managePosts" type="submit" >Manage posts</button>
+            </a>
+        </div>
+
+    </div>
+
+    <!--post-lists-->
+    <div class="panel-box">
+        <div class="panel-post" th:each="user : ${users}">
+            <div id=#post-title class="panel-post-item">
+                <span th:text="${user.getName()}">username</span>
+            </div>
+
+            <div class="panel-post-item">
+                <a th:href="@{/blog/panel/manageUsers/delete/{id}(id=${user.getId()})}">
+                    <button id="delete-button" name="Delete">Delete User</button>
+                </a>
+            </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 </body>
 </html>
