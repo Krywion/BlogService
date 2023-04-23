@@ -30,14 +30,6 @@ public class PostResource {
                 );
     }
 
-    @PostMapping("/createpost")
-    public ResponseEntity<Post> createPost(@RequestParam String title, String content, String author, String category) throws IOException {
-
-        return new ResponseEntity<>(
-                postService.addPost(title, content, author, category),
-                HttpStatus.CREATED
-        );
-    }
 
     @GetMapping("/{id}")
     public ResponseEntity<Optional<Post>> getSinglePost(@PathVariable Long id){
