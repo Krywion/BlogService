@@ -22,13 +22,18 @@ public class PostResource {
 
     // create
     @PostMapping("/createpost")
-    public ResponseEntity<Post> createPost(@RequestParam String title, String content, String author, String category, MultipartFile file) throws IOException {
-
+    public ResponseEntity<Post> createPost(@RequestParam("title") String title,
+                                           @RequestParam("content") String content,
+                                           @RequestParam("author") String author,
+                                           @RequestParam("category") String category,
+                                           @RequestParam("addedBy") String addedBy,
+                                           @RequestParam(value="file", required = false) MultipartFile file) throws IOException {
         return new ResponseEntity<>(
-                postService.addPost(title, content, author, category, file),
-                        HttpStatus.CREATED
-                );
+                postService.addPost(title, content, author, category, addedBy, file),
+                HttpStatus.CREATED
+        );
     }
+
 
 
     @GetMapping("/{id}")

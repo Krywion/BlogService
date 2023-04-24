@@ -23,8 +23,6 @@ public class Comment {
     private String content;
 
     private LocalDateTime publicationDate;
-    private Long likes;
-    private Long dislikes;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name="post_id", nullable = false)
@@ -36,16 +34,12 @@ public class Comment {
         this.content = content;
         this.author = author;
         this.publicationDate = LocalDateTime.now();
-        this.likes = 0L;
-        this.dislikes = 0L;
     }
 
     public Comment(String content, Post post) {
         this.content = content;
         this.post = post;
         this.publicationDate = LocalDateTime.now();
-        this.likes = 0L;
-        this.dislikes = 0L;
         this.author = "Anonymous";
     }
 

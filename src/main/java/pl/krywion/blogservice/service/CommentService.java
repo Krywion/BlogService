@@ -39,11 +39,24 @@ public class CommentService {
         }
     }
 
+    public boolean deleteComment(Long id) {
+        Optional<Comment> comment = commentRepository.findById(id);
+        if(comment.isPresent()) {
+            commentRepository.deleteById(id);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public List<Comment> getAllCommentsOfPost(Long id) {
         return commentRepository.findAllByPost_Id(id);
     }
     public List<Comment> getAllComments() {
 
         return (List<Comment>) commentRepository.findAll();
+    }
+    public Optional<Comment> getSingleComment(Long id) {
+        return commentRepository.findById(id);
     }
 }

@@ -43,16 +43,19 @@ public class Post {
     @JsonManagedReference
     private List<Comment> comments;
 
+    @JsonIgnore
     public String showPublicationDate() {
         LocalDateTime pd = this.publicationDate;
         String date = pd.getMonth() + " " + pd.getDayOfMonth() + " " + pd.getYear();
         return date;
     }
 
+    @JsonIgnore
     public String getImageDataAsBase64() {
         return Base64.getEncoder().encodeToString(ImageUtils.decompressImage(this.imageData));
     }
 
+    @JsonIgnore
     public boolean isHidden() {
         if (status == PostStatus.HIDDEN)
             return true;

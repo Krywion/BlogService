@@ -40,33 +40,6 @@ public class PostService {
         return post;
     }
 
-    public Post addPost(String title, String content, String author, String category, MultipartFile file) throws IOException {
-        Post post = Post.builder()
-                .title(title)
-                .content(content)
-                .author(author)
-                .category(category)
-                .status(PostStatus.HIDDEN)
-                .imageName(file.getOriginalFilename())
-                .imageType(file.getContentType())
-                .imageData(ImageUtils.compressImage(file.getBytes()))
-                .publicationDate(LocalDateTime.now()).build();
-        postRepository.save(post);
-        return post;
-    }
-
-    public Post addPost(String title, String content, String author, String category) throws IOException {
-        Post post = Post.builder()
-                .title(title)
-                .content(content)
-                .author(author)
-                .category(category)
-                .status(PostStatus.HIDDEN)
-                .publicationDate(LocalDateTime.now()).build();
-        postRepository.save(post);
-        return post;
-    }
-
     public Optional<Post> singlePost(Long id) {
        return postRepository.findById(id);
     }
